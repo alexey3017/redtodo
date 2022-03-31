@@ -8,7 +8,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-export const Item = ({text, completed, id, deleteTask}) => {
+export const Item = ({text, completed, id, deleteTask, toggleCheckbox}) => {
 
     const [confirmDelete, setConfirmDelete] = useState(false);
 
@@ -23,10 +23,15 @@ export const Item = ({text, completed, id, deleteTask}) => {
     const onCancelDelete = () => {
         setConfirmDelete(false);
     };
+
+    const onCheckboxClick = () => {
+        toggleCheckbox(id);
+    };
+
     return (
         <ListItem>
             <div className="d-flex item">
-                <Checkbox checked={completed} icon={<RadioButtonUncheckedIcon/>} checkedIcon={<CheckCircleIcon/>}/>
+                <Checkbox checked={completed} icon={<RadioButtonUncheckedIcon/>} checkedIcon={<CheckCircleIcon/>} onChange={onCheckboxClick}/>
                 <Typography className="item-text">{text}</Typography>
                 {confirmDelete ? (
                     <div>
