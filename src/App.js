@@ -30,7 +30,7 @@ function App() {
     const addTask = () => {
         dispatch({
             type: 'ADD_TASK',
-            payload: {text: inputText, id: state.length + 1, completed: check},
+            payload: {text: inputText, id: state.length ? state.length + 1 : 1, completed: check},
         });
         setInputText('');
         setCheck(false);
